@@ -1,0 +1,23 @@
+﻿@model IEnumerable<SuperCarros2.Vehiculos>
+
+@{
+    ViewBag.Title = "ImgView";
+}
+
+<h2>Carros disponibles</h2>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3">
+            <img src="~/public/vehiculos_img/@(string.IsNullOrEmpty(item.Imagen)? "CarIconRed2.png" : item.Imagen)"
+                 style="height:100px ; width:100px" />
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </div>
+
+        
+
+    }
+</div>

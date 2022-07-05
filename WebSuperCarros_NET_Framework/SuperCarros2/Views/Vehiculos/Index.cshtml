@@ -1,0 +1,111 @@
+﻿@model IEnumerable<SuperCarros2.Vehiculos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista vehiculos creados</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </th>
+        <th>
+            Precio (US$)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Combustible)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Puertas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pasajeros)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Motor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Transmisión)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Año)
+        </th>
+
+        <th>
+            Fecha de creación
+        </th>
+        <th>
+            Marca
+        </th>
+        <th>
+            Color
+        </th>
+        <th>
+            Modelo
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img src="~/public/vehiculos_img/@(string.IsNullOrEmpty(item.Imagen)? "CarIconRed2.png" : item.Imagen)" style="height:100px ; width:100px"/>
+           
+        </td>
+
+        <td>
+            <span style="color:forestgreen">@item.Precio</span>
+            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Combustible)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Puertas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pasajeros)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Motor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Transmisión)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Año)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>
